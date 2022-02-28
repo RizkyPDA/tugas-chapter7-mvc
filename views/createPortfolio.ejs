@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include ('partials/header') %>
+</head>
+
+<body id="page-top">
+  <!-- Navigation-->
+  <%- include ('partials/nav')  %>
+  <!-- Masthead-->
+  <header class="masthead-create">
+    <div class="container">
+      <!-- <div class="masthead-subheading">How to create a portfolio with these easy tips</div>
+      <div class="masthead-heading">Our studio is the world's easiest design tool. And the best part?<br><span style="text-transform:uppercase">Our Studio it's free!</span><br>Create a sleek, and professional portfolio with Our Studio, today.</div> -->
+
+    </div>
+  </header>
+
+  <!-- Portfolio Grid-->
+  <section class="page-section bg-light" id="portfolio">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-heading text-uppercase">Create New Portfolio</h2>
+        <h3 class="section-subheading text-muted">What portfolio do you want?</h3>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 ">
+          <!-- Portfolio item 1-->
+          <div class="row">
+            <form action="/create" method="post">
+              <div class="row mb-2">
+                <div class="col">
+                  <label for="project_name">New Project Name</label>
+                  <input type="text" class="form-control" placeholder="Project name" name="project_name" aria-label="" required>
+                </div>
+                <div class="col">
+                  <label for="client">New Client Name</label>
+                  <input type="text" class="form-control" placeholder="client" name="client" aria-label="" required>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col">
+                  <label for="category">New Category Name</label>
+                  <input type="text" class="form-control" placeholder="Category" name="category" aria-label="" required>
+                </div>
+                <div class="col">
+                  <label for="release_date">Project Release Date</label>
+                  <input type="date" class="form-control" placeholder="Project initial release date" name="release_date" aria-label="" required>
+                </div>
+              </div>
+
+
+              <div>
+                <button type="submit" class="btn btn-success">Create</button>
+              </div>
+
+            </form>
+
+          </div>
+          <!-- Portfolio item 2
+          <div class="portfolio-item">
+            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+              </div>
+              <img class="img-fluid" src="assets/img/portfolio/2.jpg" alt="..." />
+            </a>
+            <div class="portfolio-caption">
+              <div class="portfolio-caption-heading">Explore</div>
+              <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 mb-4">
+          
+          <div class="portfolio-item">
+            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+              </div>
+              <img class="img-fluid" src="assets/img/portfolio/3.jpg" alt="..." />
+            </a>
+            <div class="portfolio-caption">
+              <div class="portfolio-caption-heading">Finish</div>
+              <div class="portfolio-caption-subheading text-muted">Identity</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
+          
+          <div class="portfolio-item">
+            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+              </div>
+              <img class="img-fluid" src="assets/img/portfolio/4.jpg" alt="..." />
+            </a>
+            <div class="portfolio-caption">
+              <div class="portfolio-caption-heading">Lines</div>
+              <div class="portfolio-caption-subheading text-muted">Branding</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
+          
+          <div class="portfolio-item">
+            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+              </div>
+              <img class="img-fluid" src="assets/img/portfolio/5.jpg" alt="..." />
+            </a>
+            <div class="portfolio-caption">
+              <div class="portfolio-caption-heading">Southwest</div>
+              <div class="portfolio-caption-subheading text-muted">Website Design</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          
+          <div class="portfolio-item">
+            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+              </div>
+              <img class="img-fluid" src="assets/img/portfolio/6.jpg" alt="..." />
+            </a>
+            <div class="portfolio-caption">
+              <div class="portfolio-caption-heading">Window</div>
+              <div class="portfolio-caption-subheading text-muted">Photography</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </section>
+  <div>
+    <%- include('partials/footer')  %>
+  </div>

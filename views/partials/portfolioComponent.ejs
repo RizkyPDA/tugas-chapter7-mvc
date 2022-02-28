@@ -1,0 +1,28 @@
+<div class="portfolio-item">
+  <a class="portfolio-link" data-bs-toggle="modal" href="#<%= item.uuid %>">
+    <div class="portfolio-hover">
+      <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+    </div>
+    <img class="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." />
+  </a>
+  <div class="portfolio-caption">
+    <div class="portfolio-caption-heading"><%= item.project_name %> </div>
+    <div class="portfolio-caption-subheading text-muted"><%= item.category %> </div>
+    <div class="portfolio-caption-subheading text-muted"><%= new Date(item.release_date).toLocaleDateString('id-ID') %> </div>
+    <div class="btn-group" role="group" aria-label="Basic example">
+
+      <form action="/delete/<%= item.uuid %>" method="post">
+        <button type="submit" class="btn btn-danger">
+          <a href="/Delete/<%= item.uuid %>"></a>Delete</button>
+      </form>
+
+      <button type="button" class="btn btn-primary">
+        <a href=" /Edit/<%= item.uuid %>"></a>Edit</button>
+
+      <button type="button" class="btn btn-success">
+        <a href="/detail/<%= item.uuid %>"></a>Detail</button>
+    </div>
+  </div>
+</div>
+</div>
+<div class="col-lg-4 col-sm-6 mb-4">
