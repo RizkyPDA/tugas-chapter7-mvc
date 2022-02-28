@@ -1,5 +1,13 @@
 const router = require("express").Router();
-const { Home, createPortfolio, createPortfolioFunction, DetailPortfolio, EditPortfolio, DeletePortfolio } = require("../controller");
+const {
+	Home,
+	createPortfolio,
+	createPortfolioFunction,
+	DetailPortfolio,
+	EditPortfolio,
+	EditPortfolioFunction,
+	DeletePortfolioFunction,
+} = require("../controller");
 
 // untuk render halaman home page
 router.get("/", Home);
@@ -10,8 +18,13 @@ router.post("/create", createPortfolioFunction);
 
 router.get("/detail/:id", DetailPortfolio);
 
-router.get("/Edit/:id", EditPortfolio);
+// untuk render halaman edit portfolio
+router.get("/edit/:id", EditPortfolio);
 
-router.post("delete/:id", DeletePortfolio);
+// untuk update portfolio
+router.post("/edit/:id", EditPortfolioFunction);
+
+// untuk delete portfolio
+router.post("/delete/:id", DeletePortfolioFunction);
 
 module.exports = router;

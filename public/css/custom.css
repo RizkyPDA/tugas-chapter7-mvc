@@ -1,0 +1,235 @@
+/* Import Font Great Vibes */
+@import url("https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap");
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+/* Start Header */
+
+.header {
+	background-image: url("/assets/img/header-bg.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.header .navbar-bg {
+	background-color: rgba(33, 37, 41, 0.6);
+}
+
+.header .navbar-brand {
+	color: #fed136;
+	font-family: "Lobster Two", cursive;
+	font-size: 2rem;
+}
+
+.header .navbar-brand:hover {
+	color: #fed136;
+}
+
+.header .nav-link {
+	color: #e7e7e8 !important;
+}
+
+.header .nav-link:hover {
+	color: #fed136 !important;
+}
+
+.header__title {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 18rem 0 16rem;
+}
+
+.header__title-text {
+	color: white;
+	text-align: center;
+}
+
+.header__title h1:first-child {
+	font-size: 1.3rem;
+}
+
+.header__title-btn .btn {
+	background-color: #ffc800;
+	color: white;
+	font-size: 1.3rem;
+	padding: 0.5em;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background-color 0.3s ease-in-out;
+}
+
+.header__title-btn .btn:hover {
+	background-color: #b68f02;
+}
+
+/* End Header */
+
+/* Start Services */
+
+.services {
+	padding: 10rem 0;
+}
+
+.services__title,
+.services__card {
+	text-align: center;
+}
+
+.services__title h2 {
+	font-weight: bold;
+	font-size: 1.7rem;
+}
+
+.services__card .fa-circle {
+	color: #ffc800;
+}
+
+.services__card h3 {
+	font-weight: bold;
+}
+
+.services__card p {
+	font-size: 1rem;
+}
+
+/* End Services */
+
+/* Start Portfolio */
+
+.portfolio {
+	padding: 10rem 0;
+	background-color: #f8f9fa;
+}
+
+.portfolio__title {
+	text-align: center;
+}
+
+.portfolio__title h2 {
+	font-weight: bold;
+	font-size: 1.7rem;
+}
+
+.portfolio__card-list {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.portfolio__card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: rgb(255, 249, 224);
+	width: 80%;
+	margin: 1.2rem 0;
+}
+
+.portfolio__card-img img {
+	width: 100%;
+	max-width: 350px;
+	height: auto;
+}
+
+.portfolio__overlay a {
+	display: none;
+}
+
+.portfolio__card-body {
+	text-align: center;
+	padding: 2rem 0 4rem;
+}
+
+.portfolio__card-body a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+/* End Portfolio */
+
+/* Start Create, Detail, Edit Portfolio */
+
+.createPortfolio,
+.detailPortfolio,
+.editPortfolio {
+	padding: 18rem 0;
+}
+
+.detailPortfolio__title {
+	text-align: center;
+}
+
+.detailPortfolio__title h2 {
+	font-weight: bold;
+	font-size: 1.7rem;
+}
+
+.detailPortfolio__content {
+	display: flex;
+	flex-direction: column;
+}
+
+.detailPortfolio__content-img {
+	margin: 2rem 0;
+}
+
+.detailPortfolio__content-img img {
+	width: 100%;
+	max-width: 500px;
+	height: auto;
+}
+
+.detailPortfolio__content-txt {
+	text-align: center;
+}
+
+.createPortfolio__btn-group,
+.detailPortfolio__btn-group,
+.editPortfolio__btn-group {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 2rem;
+	margin-top: 5rem;
+}
+
+.createPortfolio__btn-group .btn-submit,
+.detailPortfolio__btn-group .btn-edit,
+.editPortfolio__btn-group .btn-submit {
+	background-color: #ffc800;
+	min-width: 125px;
+	color: #403c3a;
+	transition: background-color 0.3s ease-in-out;
+}
+
+.createPortfolio__btn-group .btn-submit:hover,
+.detailPortfolio__btn-group .btn-edit:hover,
+.editPortfolio__btn-group .btn-submit:hover {
+	background-color: #b68f02;
+}
+
+.createPortfolio__btn-group .btn-back,
+.detailPortfolio__btn-group .btn-delete,
+.editPortfolio__btn-group .btn-back {
+	background-color: #ff5252;
+	min-width: 125px;
+	color: white;
+	transition: background-color 0.3s ease-in-out;
+}
+
+.createPortfolio__btn-group .btn-back:hover,
+.detailPortfolio__btn-group .btn-delete:hover,
+.editPortfolio__btn-group .btn-back:hover {
+	background-color: #9e4141;
+}
+
+/* End Create, Detail, Edit Portfolio */

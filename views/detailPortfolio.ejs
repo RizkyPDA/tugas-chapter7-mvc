@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include('partials/head') %>
+	</head>
+	<body>
+		<!-- Start Header -->
+		<header class="header">
+			<!-- Start Navbar -->
+			<%- include("partials/navbar") %>
+			<!-- End Navbar -->
+		</header>
+
+		<!-- Start Detail Portfolio -->
+		<section class="detailPortfolio">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 detailPortfolio__title">
+						<h2>DETAIL PORTFOLIO</h2>
+						<p class="text-muted fst-italic my-4">Lorem ipsum dolor sit amet consectetur.</p>
+					</div>
+				</div>
+
+				<div class="mt-3 detailPortfolio__content">
+					<div class="detailPortfolio__content-img">
+						<img src="/assets/img/portfolio/1.jpg" alt="" />
+					</div>
+					<div class="detailPortfolio__content-txt">
+						<h3><%= data.project_name %></h3>
+						<p class="text-muted">Client : <%= data.client %></p>
+						<p class="text-muted">Category : <%= data.category %></p>
+						<p class="text-muted"><%= new Date(data.release_date).toLocaleDateString('id-ID') %></p>
+						<div class="detailPortfolio__btn-group">
+							<a href="/edit/<%= data.uuid %>" class="btn btn-lg btn-edit">Edit</a>
+							<form action="/delete/<%= data.uuid %>" method="post">
+								<button type="submit" class="btn btn-lg btn-delete">Delete</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Detail Portfolio -->
+
+		<!-- Bootstrap Bundle with Popper -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>
