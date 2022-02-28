@@ -1,0 +1,23 @@
+{
+  "name": "tugas-chapter7-mvc",
+  "version": "1.0.0",
+  "description": "Tugas Chapter 7 MVC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RizkyPDA/tugas-chapter7-mvc.git"
+  },
+  "author": "Juan, Rizky, Suryo, Ninda, & Bayu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RizkyPDA/tugas-chapter7-mvc/issues"
+  },
+  "homepage": "https://github.com/RizkyPDA/tugas-chapter7-mvc#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.3"
+  }
+}
