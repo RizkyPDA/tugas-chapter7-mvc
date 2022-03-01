@@ -26,31 +26,38 @@
         <div class="col-lg-12 ">
           <!-- Portfolio item 1-->
           <div class="row">
-            <form action="/create" method="post">
+            <form action="/edit/<%= data.uuid %>" method="post" enctype="multipart/form-data">
               <div class="row mb-2">
                 <div class="col">
-                  <label for="project_name">New Project Name</label>
-                  <input type="text" class="form-control" placeholder="Project name" name="project_name" value=" " required>
+                  <label for="project_name">Project Name</label>
+                  <input type="text" class="form-control" placeholder="Project name" name="project_name" value="<%= data.project_name %>" required>
                 </div>
                 <div class="col">
-                  <label for="client">New Client Name</label>
-                  <input type="text" class="form-control" placeholder="client" name="client" value="" required>
+                  <label for="client">Client Name</label>
+                  <input type="text" class="form-control" placeholder="client" name="client" value="<%= data.client %> " required>
                 </div>
               </div>
               <div class="row mb-2">
                 <div class="col">
-                  <label for="category">New Category Name</label>
-                  <input type="text" class="form-control" placeholder="Category" name="category" value="" required>
+                  <label for="category">Category Name</label>
+                  <input type="text" class="form-control" placeholder="Category" name="category" value="<%= data.category %> " required>
                 </div>
                 <div class="col">
                   <label for="release_date">Project Release Date</label>
-                  <input type="date" class="form-control" placeholder="Project initial release date" name="release_date" value="" required>
+                  <input type="date" class="form-control" placeholder="Project initial release date" name="release_date" value="<%= new Date(data.release_date).toLocaleDateString('en-CA') %>" required>
                 </div>
+              </div>
+              <div class="row">
+                  <div class="col-lg-6">
+                  <label for="image">Upload Image</label>
+                <input type="file" class="form-control" placeholder="" name="image" accept="image/*" aria-label="" multiple>
+                  </div>
+                
               </div>
 
 
               <div>
-                <button type="submit" class="btn btn-success">Create</button>
+                <button type="submit" class="btn btn-success">Edit</button>
               </div>
 
             </form>

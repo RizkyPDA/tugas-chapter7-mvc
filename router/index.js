@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Home, createPortfolio, createPortfolioFunction, EditPortfolio, DeletePortfolio } = require("../controller");
+const { Home, createPortfolio, createPortfolioFunction, EditPortfolio, EditPortfolioFunction, DeletePortfolio } = require("../controller");
 
 //middleware untuk upload image
 const uploadImage = require("../utils/uploadImage");
@@ -12,6 +12,8 @@ router.get("/create", createPortfolio);
 router.post("/create", uploadImage.array("image", 3), createPortfolioFunction);
 
 router.get("/edit/:id", EditPortfolio);
+
+router.post("/edit/:id", uploadImage.array("image", 3), EditPortfolioFunction);
 
 router.post("/delete/:id", DeletePortfolio);
 

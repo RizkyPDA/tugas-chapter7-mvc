@@ -1,42 +1,46 @@
 "use strict";
-const database = require("mime-db");
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class Portfolio extends Model {
+  class File extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
-      Portfolio.hasMany(models.File, {
+      File.belongsTo(models.Portfolio, {
         foreignKey: "owner_uuid",
-        as: "image",
+        as: "portfolio",
       });
+      // define association here
     }
   }
-  Portfolio.init(
+  File.init(
     {
       uuid: {
         type: DataTypes.UUID,
         primaryKey: true,
         defaultValue: DataTypes.UUIDV4,
       },
-      project_name: {
+      file_url: {
         type: DataTypes.STRING(255),
         allowNull: false,
       },
-      client: {
+      file_name: {
         type: DataTypes.STRING(255),
         allowNull: false,
       },
-      category: {
+      file_size: {
         type: DataTypes.STRING(255),
         allowNull: false,
       },
-      release_date: {
-        type: DataTypes.DATE,
+      original_filename: {
+        type: DataTypes.STRING(255),
+        allowNull: false,
+      },
+      owner_uuid: {
+        type: DataTypes.UUID,
+        allowNull: false,
       },
       createdAt: {
         type: DataTypes.DATE,
@@ -47,11 +51,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Portfolio",
-      createdAt: true,
+      modelName: "File",
+      createdAt: "createdAt",
       updatedAt: "updatedAt",
       freezeTableName: true,
     }
   );
-  return Portfolio;
+  return File;
 };
