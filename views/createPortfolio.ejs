@@ -28,7 +28,7 @@
         <div class="col-lg-12 ">
           <!-- Portfolio item 1-->
           <div class="row">
-            <form action="/create" method="post">
+            <form action="/create" method="post" enctype="multipart/form-data">
               <div class="row mb-2">
                 <div class="col">
                   <label for="project_name">New Project Name</label>
@@ -44,10 +44,17 @@
                   <label for="category">New Category Name</label>
                   <input type="text" class="form-control" placeholder="Category" name="category" aria-label="" required>
                 </div>
-                <div class="col">
+                <div class="col mb-2">
                   <label for="release_date">Project Release Date</label>
                   <input type="date" class="form-control" placeholder="Project initial release date" name="release_date" aria-label="" required>
                 </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                  <label for="image">Upload Image</label>
+                <input type="file" class="form-control" placeholder="" name="image" accept="image/*" aria-label="" multiple>
+                  </div>
+                
+              </div>
               </div>
 
 

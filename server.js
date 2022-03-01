@@ -4,6 +4,10 @@ const express = require("express");
 const app = express();
 const db = require("./models");
 const router = require("./router");
+// dependency multer
+const multer = require("multer");
+// dependency path
+const path = require("path");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
