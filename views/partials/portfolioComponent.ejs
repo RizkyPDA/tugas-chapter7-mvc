@@ -1,5 +1,5 @@
 <div class="portfolio-item">
-  <a class="portfolio-link" data-bs-toggle="modal" href="#<%= item.uuid %>">
+  <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal<%= Number(index) + 1 %>">
     <div class="portfolio-hover">
       <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
     </div>
@@ -12,15 +12,18 @@
     <div class="btn-group" role="group" aria-label="Basic example">
 
       <form action="/delete/<%= item.uuid %>" method="post">
-        <button type="submit" class="btn btn-danger">
-          <a href="/Delete/<%= item.uuid %>"></a>Delete</button>
+       
+          <a href="/delete/<%= item.uuid %>"> <button type="submit" class="btn btn-danger">Delete</button></a>
       </form>
+<a href="/edit/<%= item.uuid %>">
+  <button type="button" class="btn btn-primary">Edit</button>
+</a>
 
-      <button type="button" class="btn btn-primary">
-        <a href=" /Edit/<%= item.uuid %>"></a>Edit</button>
-
-      <button type="button" class="btn btn-success">
-        <a href="/detail/<%= item.uuid %>"></a>Detail</button>
+       
+<a href="/detail/<%= item.uuid %>">
+      <button type="button" class="btn btn-success">Detail</button>
+      </a>
+        
     </div>
   </div>
 </div>

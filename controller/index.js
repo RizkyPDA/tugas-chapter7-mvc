@@ -61,7 +61,7 @@ const DeletePortfolio = async (req, res) => {
   try {
     const portfolioToDelete = await Portfolio.destroy({
       where: {
-        uuid: req.params.uuid,
+        uuid: req.params.id,
       },
     });
 

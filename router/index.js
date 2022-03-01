@@ -10,8 +10,8 @@ router.post("/create", createPortfolioFunction);
 
 router.get("/detail/:id", DetailPortfolio);
 
-router.get("/Edit/:id", EditPortfolio);
+router.get("/edit/:id", EditPortfolio);
 
-router.post("delete/:id", DeletePortfolio);
+router.post("/delete/:id", DeletePortfolio);
 
 module.exports = router;
