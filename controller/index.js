@@ -3,7 +3,9 @@ const fs = require("fs");
 
 // controller untuk render home page
 const Home = async (req, res) => {
-  const projectList = await Portfolio.findAll();
+  const projectList = await Portfolio.findAll({
+    include: ["image"],
+  });
   res.render("home", {
     data: projectList,
   });
@@ -28,11 +30,11 @@ const createPortfolioFunction = async (req, res) => {
     .then(async (data) => {
       if (req.files.length > 0) {
         for (const item of req.files) {
-          await file.create({
+          await File.create({
             file_url: `/images/${item.filename}`,
             file_name: item.filename,
             file_size: item.size,
-            oirginal_filename: item.originalname,
+            original_filename: item.originalname,
             owner_uuid: data.uuid,
           });
         }
@@ -82,7 +84,7 @@ const EditPortfolio = async (req, res, next) => {
 // untuk Edit book
 const EditPortfolioFunction = async (req, res) => {
   const { project_name, client, category, release_date } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
   try {
     const portfolioToUpdate = await Portfolio.findOne({
       where: {
@@ -91,7 +93,7 @@ const EditPortfolioFunction = async (req, res) => {
       include: ["image"],
     });
     console.log("====================================");
-    console.log(req.files);
+    // console.log(req.files);
     console.log("====================================");
 
     // kalau user upload gambar baru
