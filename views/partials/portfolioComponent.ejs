@@ -1,29 +1,32 @@
-<div class="portfolio-item">
+<div class="portfolio-item card h-100">
   <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal<%= Number(index) + 1 %>">
     <div class="portfolio-hover">
       <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
     </div>
-    <img class="img-fluid" src="<%= item.image[0].file_url %>" alt="..." />
+    <% if (item.image.length > 0) { %>
+    <!-- Tampilan jika ada gambar yang di-upload -->
+    <img class="img-fluid portfolio-img" src="<%= item.image[0].file_url %>" alt="..." />
+    <% } else { %>
+    <!-- Tampilan jika tidak ada gambar yang di-upload -->
+    <img class="img-fluid portfolio-img" src="https://dummyimage.com/600x400/a8a8a8/ebebeb&text=No+Image" alt="..." />
+    <% } %>
   </a>
   <div class="portfolio-caption">
     <div class="portfolio-caption-heading"><%= item.project_name %> </div>
     <div class="portfolio-caption-subheading text-muted"><%= item.category %> </div>
     <div class="portfolio-caption-subheading text-muted"><%= new Date(item.release_date).toLocaleDateString('id-ID') %> </div>
-    <div class="btn-group" role="group" aria-label="Basic example">
+    <div class="btn-group my-4" role="group" aria-label="Basic example">
 
       <form action="/delete/<%= item.uuid %>" method="post">
-       
-          <a href="/delete/<%= item.uuid %>"> <button type="submit" class="btn btn-danger">Delete</button></a>
+
+        <a href="/delete/<%= item.uuid %>"> <button type="submit" class="btn btn-danger me-4">Delete</button></a>
       </form>
-<a href="/edit/<%= item.uuid %>">
-  <button type="button" class="btn btn-primary">Edit</button>
-</a>
+      <a href="/edit/<%= item.uuid %>">
+        <button type="button" class="btn btn-primary">Edit</button>
+      </a>
 
 
-        
+
     </div>
   </div>
 </div>
-</div>
-<div class="col-lg-4 col-sm-6 mb-4">
-
