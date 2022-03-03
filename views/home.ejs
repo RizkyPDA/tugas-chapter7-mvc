@@ -58,14 +58,57 @@
         <h2 class="section-heading text-uppercase">Portfolio</h2>
         <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
       </div>
-      <div class="row">
+      <div class="row d-flex justify-content-evenly">
+        <% if (data.length > 0) { %>
+        <!-- Tampilan jika ada data portfolio -->
+        <% data.forEach((item, index, image) => { %>
         <div class="col-lg-4 col-sm-6 mb-4">
           <!-- Portfolio item 1-->
-          <% data.forEach((item, index, image) => { %>
-          <%- include ('partials/portfolioComponent', {item: item, index: index, image:image})  %>
-          <% }) %>
 
-          <!-- Portfolio item 2
+          <%- include ('partials/portfolioComponent', {item: item, index: index, image:image})  %>
+
+        </div>
+        <% }) %>
+        <% } else { %>
+        <!-- Tampilan jika tidak ada data portfolio -->
+        <div class="col-lg-4 col-sm-6">
+          <h4 class="text-center">In Progress</h4>
+          <%- include ('partials/portfolioPlaceholder') %>
+        </div>
+        <% } %>
+      </div>
+
+      <!-- Tampilkan tombol pagination hanya ketika ada data portfolio -->
+      <% if (totalPage > 0) { %>
+      <nav aria-label="Page navigation example" class="d-flex justify-content-center mt-4">
+        <ul class="pagination">
+          <li class="page-item <%= currentPage == 1 ? 'disabled' : '' %>">
+            <a class="page-link" href="/?page=<%= prevPage %>">
+              Prev
+            </a>
+          </li>
+
+          <% for( let index = 1; index <= totalPage; index++ ) { %>
+          <li class="page-item <%= index == currentPage ? 'active' : '' %>">
+            <a class="page-link" href="/?page=<%= index %>">
+              <%= index %>
+            </a>
+          </li>
+          <% } %>
+
+          <li class="page-item <%= currentPage == totalPage ? 'disabled' : '' %>">
+            <a class="page-link" href="/?page=<%= nextPage %>">
+              Next
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <% } %>
+
+    </div>
+  </section>
+
+  <!-- Portfolio item 2
           <div class="portfolio-item">
             <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
               <div class="portfolio-hover">
@@ -138,10 +181,8 @@
               <div class="portfolio-caption-subheading text-muted">Photography</div>
             </div>
           </div>
-        </div>
-      </div>
-    </div> -->
-  </section>
+        </div> -->
+
   <!-- About-->
   <section class="page-section" id="about">
     <div class="container">

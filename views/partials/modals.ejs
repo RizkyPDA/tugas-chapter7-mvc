@@ -9,7 +9,13 @@
               <!-- Project details-->
               <h2 class="text-uppercase"><%= item.project_name %></h2>
               <p class="item-intro text-muted"><%= item.client %></p>
+              <% if (item.image.length > 0) { %>
+              <!-- Tampilan jika ada gambar yang di-upload -->
               <img class="img-fluid d-block mx-auto <%= index == 0 ? 'active': '' %>" src="<%= item.image[0].file_url %>" alt="portfolio-image" />
+              <% } else { %>
+              <!-- Tampilan jika tidak ada gambar yang di-upload -->
+              <img class="img-fluid d-block mx-auto <%= index == 0 ? 'active': '' %>" src="https://dummyimage.com/600x400/a8a8a8/ebebeb&text=No+Image" alt="..." />
+              <% } %>
               <p>
                 Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae
                 cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!

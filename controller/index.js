@@ -3,12 +3,30 @@ const fs = require("fs");
 
 // controller untuk render home page
 const Home = async (req, res) => {
-  const projectList = await Portfolio.findAll({
-    include: ["image"],
-  });
-  res.render("home", {
-    data: projectList,
-  });
+  try {
+    const page = Number(req.query.page) || 1
+    const itemPerPage = 6
+
+    const projectList = await Portfolio.findAndCountAll({
+      distinct: true,
+      include: ["image"],
+      order: [["release_date", "DESC"]],
+      limit: itemPerPage,
+      offset: (page - 1) * itemPerPage
+    });
+
+    // console.log(projectList);
+
+    res.render("home", {
+      data: projectList.rows,
+      currentPage: page,
+      totalPage: Math.ceil(projectList.count / itemPerPage),
+      nextPage: page + 1,
+      prevPage: (page - 1) == 0 ? 1 : page - 1
+    }); 
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // controller untuk render halaman create portfolio
@@ -143,11 +161,28 @@ const EditPortfolioFunction = async (req, res) => {
 //untuk delete portfolio
 const DeletePortfolio = async (req, res) => {
   try {
-    const portfolioToDelete = await Portfolio.destroy({
+    const portfolioToDelete = await Portfolio.findOne({
       where: {
         uuid: req.params.id,
       },
+      include: ["image"]
     });
+
+    if (portfolioToDelete.image.length > 0) {
+      for (const imageToDelete of portfolioToDelete.image) {
+        await File.destroy({
+          where: {
+            uuid: imageToDelete.uuid
+          }
+        })
+
+        fs.rmSync(__dirname + '/../public' + imageToDelete.file_url)
+      }
+    }
+
+    console.log(portfolioToDelete);
+
+    await portfolioToDelete.destroy()
 
     if (portfolioToDelete) {
       res.redirect("/");
