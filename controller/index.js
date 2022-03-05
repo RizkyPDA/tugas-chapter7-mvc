@@ -1,4 +1,5 @@
 const { Portfolio, File } = require("../models");
+const { Op } = require("sequelize");
 const fs = require("fs");
 
 // controller untuk render home page
@@ -6,23 +7,57 @@ const Home = async (req, res) => {
   try {
     const page = Number(req.query.page) || 1
     const itemPerPage = 6
+    const { project_name, client, category, release_date_from, release_date_to } = req.query
+
+    const where = {}
+
+    if (project_name) {
+      where["project_name"] = { [Op.iLike]: `%${project_name}%`};
+    }
+
+    if (client) {
+      where["client"] = { [Op.iLike]: `%${client}%`};
+    }
+
+    if (category) {
+      where["category"] = { [Op.like]: `${category}`};
+    }
+
+    if (release_date_from && release_date_to) {
+      where["release_date"] = { [Op.between]: [release_date_from, release_date_to] };
+    } else if (release_date_from) {
+      where["release_date"] = { [Op.gte]: release_date_from };
+    } else if (release_date_to) {
+      where["release_date"] = { [Op.lte]: release_date_to };
+    }
+
+    const categoryList = await Portfolio.findAll({
+      attributes: ["category"],
+      group: "category",
+      order: [["category", "ASC"]]
+    })
+
+    // console.log(categoryList);
 
     const projectList = await Portfolio.findAndCountAll({
       distinct: true,
+      where: where,
       include: ["image"],
       order: [["release_date", "DESC"]],
       limit: itemPerPage,
       offset: (page - 1) * itemPerPage
     });
 
-    // console.log(projectList);
+    // console.log(projectList.rows);
 
     res.render("home", {
       data: projectList.rows,
       currentPage: page,
       totalPage: Math.ceil(projectList.count / itemPerPage),
       nextPage: page + 1,
-      prevPage: (page - 1) == 0 ? 1 : page - 1
+      prevPage: (page - 1) == 0 ? 1 : page - 1,
+      query: req.query,
+      categoryList
     }); 
   } catch (error) {
     console.log(error);
