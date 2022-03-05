@@ -50,5 +50,24 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         });
     });
-
 });
+
+// Untuk membersihkan input pencarian
+const clearSearch = () => {
+    const input = document.querySelectorAll("input");
+    const option = document.querySelectorAll("option");
+
+    // Untuk tag html <input>
+    for (const item of input) {
+        if (item.name !== "page") {
+            item.value = null;
+        }
+    }
+
+    // Untuk tag html <option></option>
+    for (const item of option) {
+        if (item.name !== "page") {
+            item.value = null;
+        }
+    }
+}

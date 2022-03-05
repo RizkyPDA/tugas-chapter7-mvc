@@ -58,6 +58,41 @@
         <h2 class="section-heading text-uppercase">Portfolio</h2>
         <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
       </div>
+      <form action="/" method="get" class="mb-4">
+        <input type="text" class="d-none" name="page" value="1">
+        <div class="row justify-content-center justify-content-md-evenly">
+          <div class="col-10 col-md-5 col-lg-4 text-center text-lg-start my-3">
+            <label for="project_name">Project Name</label>
+            <input type="text" class="form-control" placeholder="" name="project_name" value="<%= query.project_name %>" aria-label="">
+          </div>
+          <div class="col-10 col-md-5 col-lg-4 text-center text-lg-start my-3">
+            <label for="client">Client Name</label>
+            <input type="text" class="form-control" placeholder="" name="client" value="<%= query.client %>" aria-label="">
+          </div>
+          <div class="col-10 col-md-8 col-lg-4 text-center text-lg-start my-3">
+            <label for="category">Category</label>
+            <select class="form-select" name="category" aria-label="">
+              <option value="">- Select Category -</option>
+              <% categoryList.forEach(item => { %>
+              <!-- Jika query.category sama dengan item.category dikasih attribute selected supaya bisa menyimpan pilihan option -->
+              <option value="<%= item.category %>" <%= query.category == item.category ? 'selected' : '' %>><%= item.category %></option>
+              <% }) %>
+            </select>
+          </div>
+          <div class="col-10 col-md-5 col-lg-4 text-center text-lg-start my-3">
+            <label for="release_date">Release Date From</label>
+            <input type="date" class="form-control" placeholder="" name="release_date_from" value="<%= query.release_date_from %>" aria-label="">
+          </div>
+          <div class="col-10 col-md-5 col-lg-4 text-center text-lg-start my-3">
+            <label for="release_date">Release Date To</label>
+            <input type="date" class="form-control" placeholder="" name="release_date_to" value="<%= query.release_date_to %>" aria-label="">
+          </div>
+        </div>
+        <div class="d-grid gap-4 d-flex justify-content-center">
+          <button type="submit" class="btn btn-primary">Search</button>
+          <button type="submit" onclick="clearSearch()" class="btn btn-danger">Clear</button>
+        </div>
+      </form>
       <div class="row d-flex justify-content-evenly">
         <% if (data.length > 0) { %>
         <!-- Tampilan jika ada data portfolio -->
@@ -71,7 +106,7 @@
         <% }) %>
         <% } else { %>
         <!-- Tampilan jika tidak ada data portfolio -->
-        <div class="col-lg-4 col-sm-6">
+        <div class="col-lg-4 col-sm-6 my-4">
           <h4 class="text-center">In Progress</h4>
           <%- include ('partials/portfolioPlaceholder') %>
         </div>
@@ -83,21 +118,21 @@
       <nav aria-label="Page navigation example" class="d-flex justify-content-center mt-4">
         <ul class="pagination">
           <li class="page-item <%= currentPage == 1 ? 'disabled' : '' %>">
-            <a class="page-link" href="/?page=<%= prevPage %>">
+            <a class="page-link" href="/?page=<%= prevPage %>&project_name=<%= query.project_name %>&client=<%= query.client %>&category=<%= query.category %>&release_date_from=<%= query.release_date_from %>&release_date_to=<%= query.release_date_to %>">
               Prev
             </a>
           </li>
 
           <% for( let index = 1; index <= totalPage; index++ ) { %>
           <li class="page-item <%= index == currentPage ? 'active' : '' %>">
-            <a class="page-link" href="/?page=<%= index %>">
+            <a class="page-link" href="/?page=<%= index %>&project_name=<%= query.project_name %>&client=<%= query.client %>&category=<%= query.category %>&release_date_from=<%= query.release_date_from %>&release_date_to=<%= query.release_date_to %>">
               <%= index %>
             </a>
           </li>
           <% } %>
 
           <li class="page-item <%= currentPage == totalPage ? 'disabled' : '' %>">
-            <a class="page-link" href="/?page=<%= nextPage %>">
+            <a class="page-link" href="/?page=<%= nextPage %>&project_name=<%= query.project_name %>&client=<%= query.client %>&category=<%= query.category %>&release_date_from=<%= query.release_date_from %>&release_date_to=<%= query.release_date_to %>">
               Next
             </a>
           </li>
@@ -595,7 +630,7 @@
   <!-- Bootstrap core JS-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Core theme JS-->
-  <script src="js/scripts.js"></script>
+  <script src="/js/scripts.js"></script>
   <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
   <!-- * *                               SB Forms JS                               * *-->
   <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
